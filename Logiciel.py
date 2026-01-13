@@ -129,6 +129,7 @@ with st.expander("➕ Ajouter un nouvel équipement", expanded=False):
             simultane = st.checkbox("Fonctionne simultanément ?", value=True, help="Cochez si cet appareil peut fonctionner en même temps que d'autres (pour dimensionner l'onduleur).")
 
         bouton_ajouter = st.form_submit_button("Ajouter l'équipement")
+        
 
         if bouton_ajouter and nom_eq and puissance_eq > 0:
             energie_journaliere = puissance_eq * quantite_eq * heures_eq
@@ -145,6 +146,9 @@ with st.expander("➕ Ajouter un nouvel équipement", expanded=False):
 # Affichage du tableau des équipements
 if st.session_state.equipements:
     df_equipements = pd.DataFrame(st.session_state.equipements)
+    if st.button("🗑️ Vider toute la liste"):
+        st.session_state.equipements = []
+        st.rerun()
     
     # Calcul de l'énergie totale journalière
     energie_totale_journaliere = df_equipements["Énergie (Wh/j)"].sum()
@@ -391,4 +395,5 @@ else:
     if not st.session_state.equipements:
 
         st.warning("Veuillez ajouter des équipements pour commencer le bilan.")
+
 
