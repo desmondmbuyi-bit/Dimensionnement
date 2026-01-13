@@ -21,8 +21,8 @@ def find_data_file(filename):
     return os.path.join(basepath, filename)
 
 # Définition des chemins des logos
-LOGO_PATH_APP = find_data_file("logo_entreprise.png")
-LOGO_PATH_PDF = find_data_file("logo_entreprise_pdf.png")
+LOGO_PATH_APP = find_data_file("log_entreprise.png")
+LOGO_PATH_PDF = find_data_file("log_entreprise_pdf.png")
 # --- STYLE CSS ---
 st.markdown("""
 <style>
@@ -395,5 +395,6 @@ else:
     if not st.session_state.equipements:
 
         st.warning("Veuillez ajouter des équipements pour commencer le bilan.")
+
 
 
