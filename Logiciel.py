@@ -23,22 +23,29 @@ def find_data_file(filename):
 # Définition des chemins des logos
 LOGO_PATH_APP = find_data_file("logo_entreprise.png")
 LOGO_PATH_PDF = find_data_file("logo_entreprise_pdf.png")
-
-
-# --- STYLE CSS (Amélioration du look) ---
+# --- STYLE CSS ---
 st.markdown("""
 <style>
-.stApp {
-    background-color: #f7f9fc; 
-}
+/* On ne force plus le background de .stApp pour laisser le thème s'adapter */
+
+/* On personnalise les titres pour qu'ils restent bleus dans les deux modes */
 h1, h2 {
-    color: #1f77b4; 
+    color: #1f77b4 !important; 
 }
-.stMetric {
-    background-color: #ffffff;
+
+/* On personnalise les blocs de métriques pour qu'ils s'adaptent au thème */
+div[data-testid="stMetric"] {
+    background-color: var(--secondary-background-color); /* Utilise le gris auto de Streamlit */
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Optionnel : si tu veux vraiment garder un fond bleuté uniquement en mode clair */
+@media (prefers-color-scheme: light) {
+    .stApp {
+        background-color: #f7f9fc; 
+    }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -382,4 +389,5 @@ if energie_totale_journaliere > 0:
             )
 else:
     if not st.session_state.equipements:
+
         st.warning("Veuillez ajouter des équipements pour commencer le bilan.")
