@@ -86,7 +86,7 @@ with col_milieu:
     try:
         st.image(LOGO_PATH_APP, use_container_width=True)
     except:
-        st.header("❌ Logo Entreprise")
+        st.header("")
 
 st.markdown("<h1 style='text-align: center;'>Logiciel de Dimensionnement Solaire</h1>", unsafe_allow_html=True)
 st.markdown("---")
@@ -391,3 +391,4 @@ else:
     if not st.session_state.equipements:
 
         st.warning("Veuillez ajouter des équipements pour commencer le bilan.")
+
